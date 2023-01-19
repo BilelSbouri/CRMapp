@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:CRMapp.Model"
+             mc:Ignorable="d"
+            Title="Entrer les données"
+             x:Class="CRMapp.AddUsers">
+    <ScrollView>
+        <StackLayout>
+
+            <Label Text="Type :" FontSize="Title" Style="{StaticResource HeadingLabel}" />
+            
+            <Picker x:Name="pickerUsers" Title="Type de l'utilisateur" TitleColor="Brown" Margin="0,0,20,0" >
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Responsable</x:String>
+                        <x:String>Agent</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="ID :" FontSize="Title" Style="{StaticResource HeadingLabel}" />
+            <local:CustomEntry
+                x:Name="idfield" Placeholder="ID" 
+                TextColor="Default" FontAttributes="None" 
+                HorizontalOptions="FillAndExpand" Margin="0,0,20,0"   
+                ClearButtonVisibility="WhileEditing"
+             />
+            
+            <Label 
+            Text="Numero CIN :"
+            FontSize="18"
+            Style="{StaticResource HeadingLabel}"
+            />
+            
+            <local:CustomEntry
+                x:Name="CINfield" 
+                Placeholder="Entrer la numéro CIN"
+                Margin="0,0,20,0" 
+                ClearButtonVisibility="WhileEditing"
+             />
+
+            <Label 
+            Text="Nom :"
+            FontSize="18"
+            Style="{StaticResource HeadingLabel}"
+            />
+
+            <local:CustomEntry
+                x:Name="Nomfield" 
+                Placeholder="Entrer le Nom"
+                Margin="0,0,20,0" 
+                ClearButtonVisibility="WhileEditing"
+             />
+
+            <Label 
+            Text="Prenom :"
+            FontSize="18"
+            Style="{StaticResource HeadingLabel}"
+            />
+
+            <local:CustomEntry
+                x:Name="Prenomfield" 
+                Placeholder="Entrer le Prenom"
+                Margin="0,0,20,0"
+                ClearButtonVisibility="WhileEditing"
+             />
+            
+            <Label 
+            Text="Date de naissance:"
+            FontSize="18"
+            Style="{StaticResource HeadingLabel}"
+            />
+            <DatePicker x:Name="NaissanceDatePicker" Margin="0,0,20,0" />
+            
+            <Label 
+            Text="User Name :"
+            FontSize="18"
+            Style="{StaticResource HeadingLabel}"
+            />
+
+            <local:CustomEntry
+                x:Name="UserNamefield" 
+                Placeholder="Donner un Username"
+                Margin="0,0,20,0"
+                ClearButtonVisibility="WhileEditing"
+             />
+
+            <Label 
+            Text="Mot de Passe :"
+            FontSize="18"
+            Style="{StaticResource HeadingLabel}"
+            />
+
+            <local:CustomEntry
+                x:Name="Passwordfield" 
+                Placeholder="Donner un mot de passe"
+                 Margin="0,0,20,0"
+                ClearButtonVisibility="WhileEditing"
+                IsPassword="True"
+             />
+
+            <Button
+                x:Name="btn_ajouter"
+                CornerRadius="30"
+                Text="AJOUTER"
+                Margin="0,50,0,0"
+                Style="{StaticResource PrimaryButton}"
+                Clicked="Btn_ajouter_Clicked"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRMapp.HomePageMaster"
+             Title="Master">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Page 1</x:String>
+                    <x:String>Page 2</x:String>
+                    <x:String>Page 3</x:String>
+                    <x:String>Page 4</x:String>
+                    <x:String>Page 5</x:String>
+                    <x:String>Page 6</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.Header>
+                <Grid BackgroundColor="#03A9F4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Source="https://www.easyparapharmacie.com/media/easysoft/home/manufacturer/stcnutrition.png"
+           Grid.Column="1" Grid.Row="1"/>
+                    <Label
+              Grid.Column="1"
+              Grid.Row="2"
+              Text="CRM Leader STC™" HorizontalTextAlignment="Center"
+              TextColor="Black" 
+           Style="{DynamicResource SubtitleStyle}"/>
+
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <Label VerticalOptions="FillAndExpand" 
+                    VerticalTextAlignment="Center" 
+                    Text="{Binding Title}" 
+                    d:Text="{Binding .}"
+                    FontSize="22"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Image Source="https://drscdn.500px.org/photo/1020057200/m%3D900/v2?sig=a7e9cb6936a0b6ddeaab250893e02da9c754d617890e80ea8e0003dc0623a11d"
+              />
+        <Label/>
+        <Label/>
+        <ImageButton x:Name="STC_SITE" Source="https://drscdn.500px.org/photo/1020055917/m%3D900/v2?sig=449e9adb7e44a7a203b5c34eed2a9cdb6bd9daedc30a368e015bdced6aaf0f41" 
+                   HorizontalOptions="Center" Clicked="STC_SITE_Clicked"/>
+    </StackLayout>
+</ContentPage>

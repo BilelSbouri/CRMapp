@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:CRMapp.Model"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="CRMapp.LoginAdmin">
+
+    <StackLayout VerticalOptions="Center" Margin="15">
+
+        <Label
+            Text="Administrateur"
+            Style="{StaticResource HeadingLabel}"
+            HorizontalOptions="Center"
+            FontSize="Title"
+            />
+
+        <Image
+             x:Name="Admin"
+            Aspect="AspectFit"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="150"
+            Margin="20"/>
+
+        <StackLayout Padding="0" Margin="15,10">
+
+            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                <StackLayout Orientation="Horizontal">
+                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                        <Image Source="https://www.findool.com/images/avatars/avatar.png" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+
+                    <local:CustomEntry x:Name="AdminName" Placeholder="Admin Name" TextColor="Default" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"   ClearButtonVisibility="WhileEditing" />
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                <StackLayout Orientation="Horizontal">
+                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                        <Image Source="https://images.all-free-download.com/images/graphicthumb/lock_icon_6813906.jpg" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+
+                    <local:CustomEntry x:Name="passwordField" Placeholder="Password" IsPassword="True" TextColor="Default" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" ClearButtonVisibility="WhileEditing" />
+                </StackLayout>
+            </Frame>
+
+            <StackLayout  Orientation="Horizontal">
+                <CheckBox IsChecked="False" Color="Black" />
+                <Label Text="Remember me" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+
+            </StackLayout>
+
+            <Button 
+            x:Name="Loginbutton"
+            Text="log in" 
+            Margin="0,50,0,0"
+            Style="{StaticResource PrimaryButton}"
+            Clicked="Loginbutton_Clicked"
+             CornerRadius="30"/>
+
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

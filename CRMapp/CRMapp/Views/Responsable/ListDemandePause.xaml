@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ViewModel="clr-namespace:CRMapp.ViewModel"
+             mc:Ignorable="d"
+             x:Class="CRMapp.Views.Responsable.ListDemandePause">
+    <ContentPage.BindingContext>
+        <ViewModel:PausesViewModel/>
+    </ContentPage.BindingContext>
+        
+        <StackLayout>
+           
+            <ListView x:Name="listPause"  Grid.Row="2" HasUnevenRows="true" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BorderColor="Gray" Margin="10">
+                                <Grid>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItem Text="Cancel" BackgroundColor="Red" Invoked="SwipeItem_Invoked_Cancel"></SwipeItem>
+                                            <SwipeItem Text="Confirm"  BackgroundColor="Green" Invoked="SwipeItem_Invoked_Confirm"></SwipeItem>
+                                        </SwipeView.RightItems>
+
+                                        <Grid HeightRequest="60" WidthRequest="300" BackgroundColor="DarkGray">
+                                            <Label Text="{Binding Nom}" HorizontalOptions="Start" VerticalOptions="Center" TextType="Text" TextDecorations="Underline" ></Label>
+                                            <Label Text="{Binding Durée}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                                            <Label Text="{Binding Type_pause}" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                                           
+                                        </Grid>
+
+                                    </SwipeView>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+      
+            
+        </StackLayout>
+    
+</ContentPage>

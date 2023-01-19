@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRMapp.Users_Liste">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ajouter un utilisateur "
+                     Clicked="Add_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Entry Grid.Row="0" x:Name="Search_Bar" Placeholder="Search User" TextChanged="Search_Bar_TextChanged"/>
+
+                <ListView x:Name="listview_Search"
+                  ItemSelected="listview_Search_ItemSelected"
+                  Grid.Row="1"
+                  VerticalOptions="Start"
+                  HorizontalOptions="Fill"
+                  IsVisible="False"
+                  HeightRequest="300"
+                  BackgroundColor="Transparent"
+                  Opacity="0.8">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Nom}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <ListView x:Name="userlist" ItemSelected="Userlist_ItemSelected"  Grid.Row="2" HasUnevenRows="true" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItemView>
+                                                    <Grid WidthRequest="150" HeightRequest="5">
+                                                        <Frame BackgroundColor="Red" CornerRadius="30">
+
+                                                        <Button x:Name="DeleteBtn" Text="Supprimer" BackgroundColor="Red" TextColor="Black"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" Clicked="DeleteBtn_Clicked"/>
+
+                                                    </Frame>
+                                                    </Grid>
+                                                </SwipeItemView>
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+
+                                        <Frame CornerRadius="10" Margin="10" HasShadow="True" BorderColor="DarkBlue">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image  Source="https://img.icons8.com/clouds/2x/admin-settings-male.png" HeightRequest="75" WidthRequest="75" Aspect="AspectFill"/>
+                                                <StackLayout>
+                                                    <Label  Text="{Binding User_Type}" FontSize="Subtitle" HorizontalOptions="Center"></Label>
+                                                    <Label Text="{Binding Nom}" FontSize="Body" HorizontalOptions="Center"></Label>
+                                                    <Label  Text="{Binding Prenom}"  FontSize="Body" HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </SwipeView>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

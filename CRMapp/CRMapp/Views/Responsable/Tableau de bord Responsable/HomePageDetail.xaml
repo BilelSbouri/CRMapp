@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="CRMapp.HomePageDetail"
+             Title="Dashboard">
+
+    <Grid 
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        RowSpacing="0"
+        ColumnSpacing="0"
+        Padding="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{OnPlatform iOS=100, Android=84}" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" HorizontalOptions="Fill"  VerticalOptions="Fill">
+
+            <Label 
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                Text="Tableau de Bord"
+                Style="{StaticResource PageHeaderStyle}"
+                Margin="32,0,0,0"
+               />
+
+            <Label 
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                Text="{Binding TodayDate, Mode=OneTime, StringFormat='{0:MMMM dd, yyyy}'}"
+                Style="{StaticResource SmallPageHeaderStyle}"
+                Margin="0,0,32,0"
+            />
+        </Grid>
+
+
+        <ScrollView
+            Grid.Row="1"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <StackLayout
+                Orientation="Vertical"
+                Spacing="24"
+                HorizontalOptions="FillAndExpand">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Les Agents Connectés"
+                    Style="{StaticResource SectionHeaderStyle}"
+                    Margin="0,12,0,0"/>
+
+                <microcharts:ChartView 
+                         x:Name="chartViewBar"
+                         HeightRequest="200"
+                         WidthRequest="250"
+                         HorizontalOptions="Center"                          
+                />
+
+                <!-- Number of Agents-->
+                <Grid
+                    HorizontalOptions="Center"
+                    HeightRequest="125"
+                    Margin="20,0,20,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="17" />
+                        <ColumnDefinition Width="17" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="17" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <pancakeview:PancakeView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="16"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        CornerRadius="6"
+                        HasShadow="True"
+                        BackgroundColor="{StaticResource PageBackgroundColor}">
+
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+
+                            <StackLayout Orientation="Horizontal" >
+                                <pancakeview:PancakeView
+                                    HeightRequest="12"
+                                    WidthRequest="12"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="{StaticResource TotalAgentsColor}"
+                                    CornerRadius="4" />
+
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Total Agents"
+                                    Style="{StaticResource LegendHeaderTextStyle}" />
+                            </StackLayout>
+
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="{Binding Agents, StringFormat='{0:#,##0}'}"
+                                Style="{StaticResource AgentsStyle}" />
+                        </StackLayout>
+                    </pancakeview:PancakeView>
+                </Grid>
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Les Demandes de Pause"
+                    Style="{StaticResource SectionHeaderStyle}"
+                    Margin="0,12,0,0"/>
+
+                <Grid
+                    HeightRequest="180"
+                    HorizontalOptions="Fill"
+                    Margin="32,0,32,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Chart -->
+                    <microcharts:ChartView
+                        x:Name="ChartViewPie"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        BackgroundColor="Transparent"
+                        Grid.Column="0" />
+
+                    <!-- Custom Legend -->
+                    <Grid
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        RowSpacing="10"
+                        ColumnSpacing="12">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Pause Accepter -->
+                        <pancakeview:PancakeView
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HeightRequest="10"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            BackgroundColor="{StaticResource Accepter}"
+                            Margin="0,6,0,0"
+                            CornerRadius="5" 
+                        />
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Orientation="Vertical"
+                            Spacing="0">
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="Accepter"
+                                Style="{StaticResource LegendHeaderTextStyle}" />
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="{Binding acceptedPause, StringFormat='{0:0.0%}'}"
+                                Style="{StaticResource LegendPercentageTextStyle}" />
+                        </StackLayout>
+
+                        <!--Pauses Refuser-->
+                        <pancakeview:PancakeView
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HeightRequest="10"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            BackgroundColor="{StaticResource Refuser}"
+                            Margin="0,6,0,0"
+                            CornerRadius="5"/>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Orientation="Vertical"
+                            Spacing="0">
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="Refuser"
+                                Style="{StaticResource LegendHeaderTextStyle}" />
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="{Binding pauseRefuser, StringFormat='{0:0.0%}'}"
+                                Style="{StaticResource LegendPercentageTextStyle}" />
+
+                        </StackLayout>
+
+                        <!--Total Pause-->
+                        <pancakeview:PancakeView
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            HeightRequest="10"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            BackgroundColor="{StaticResource PrimaryColor}"
+                            Margin="0,6,0,0"
+                            CornerRadius="5"/>
+
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Orientation="Vertical"
+                            Spacing="0">
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="Total"
+                                Style="{StaticResource LegendHeaderTextStyle}" />
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="{Binding TotalPause, StringFormat='{0:0.0%}'}"
+                                Style="{StaticResource LegendPercentageTextStyle}" />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Les Demandes Clients"
+                    Style="{StaticResource SectionHeaderStyle}"
+                    Margin="0,12,0,0"/>
+                <microcharts:ChartView x:Name="chartViewLine" HeightRequest="300"></microcharts:ChartView>
+                
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

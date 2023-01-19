@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:local="clr-namespace:CRMapp.Model"
+             mc:Ignorable="d"
+             x:Class="CRMapp.Views.Tableau_de_bord_Agent.DemanderPause">
+
+    <StackLayout>
+        <Label Text="Remplir la formulaire" FontSize="Title" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+        <Label Text="Durée : " TextColor="DarkGray" FontSize="Title"  />
+
+        <Picker x:Name="duree"  Title="Choisir Durée" FontSize="Title" TitleColor="Black">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>5 min</x:String>
+                    <x:String>10 min</x:String>
+                    <x:String>15 min</x:String>
+                    <x:String>20min</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Raison : " TextColor="DarkGray" FontSize="Title" />
+        <Frame>
+            <FlexLayout>
+                <Label Text=" Pause-Toilettes" TextColor="Black" FontSize="Title" />
+                <Frame></Frame>
+                <Switch x:Name="toilette" IsToggled="false"/>
+            </FlexLayout>
+        </Frame>
+        <Frame>
+            <FlexLayout>
+                <Label Text=" Pause-Café" TextColor="Black" FontSize="Title" />
+                <Frame></Frame>
+                <Frame></Frame>
+                <Switch x:Name="café" IsToggled="false" />
+            </FlexLayout>
+        </Frame>
+
+        <Label Text="Nom : " TextColor="DarkGray" FontSize="Title" />
+        <local:CustomEntry x:Name="NameEntry" Placeholder="Votre Nom" TextColor="Default" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"   ClearButtonVisibility="WhileEditing" />
+
+        <Button x:Name="Approuve_button" Text="Demander" BackgroundColor="Black" TextColor="White" CornerRadius="30"  Clicked="Approuve_button_Clicked"/>
+
+    </StackLayout>
+</ContentPage>

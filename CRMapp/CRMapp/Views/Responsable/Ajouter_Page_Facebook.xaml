@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:CRMapp.Model"
+             mc:Ignorable="d"
+             x:Class="CRMapp.Views.Responsable.Ajouter_Page_Facebook">
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Nom du Page Facebook "/>
+
+        <local:CustomEntry x:Name="NomFB" Placeholder="Tapez le nom" TextColor="Default" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"   ClearButtonVisibility="WhileEditing" />
+
+        <Label Text="Lien du page"/>
+        <local:CustomEntry x:Name="lien_page" Placeholder="https://www.example.com" TextColor="Default" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"   ClearButtonVisibility="WhileEditing" />
+        <Grid></Grid>
+        <Grid></Grid>
+        <Grid></Grid>
+        <Button x:Name="save" Text="Sauvgarder la page" Clicked="Save_Clicked" BackgroundColor="Black" TextColor="White"
+                                    CornerRadius="30"/>
+        <Grid></Grid>
+        <Grid></Grid>
+        <Grid></Grid>
+        <Button x:Name="Open" Text="Ouvrir la page" Clicked="Open_Clicked" BackgroundColor="Black" TextColor="White" CornerRadius="30" />
+
+    </StackLayout>
+
+</ContentPage>
